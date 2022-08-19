@@ -3,7 +3,7 @@
 
 using std::istream; using std::ostream;
 
-class person {
+struct person {
     public:
         date birthday;
         date age;

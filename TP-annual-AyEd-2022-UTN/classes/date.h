@@ -2,7 +2,7 @@
 #include "../CppLibrary/include.h"
 #include <ctime>
 
-class date {
+struct date {
     public:
         long int day = 0;
         long int month = 0;
@@ -34,7 +34,7 @@ class date {
             return (data.day == comparable.day && data.month == comparable.month && data.year == comparable.year);
         };
         friend bool operator != (date data, date comparable) {
-            return !(data == comparable);
+            return (data != comparable);
         };
         friend bool operator <= (date data, date comparable) {
             return (comparable == data || comparable < data);
