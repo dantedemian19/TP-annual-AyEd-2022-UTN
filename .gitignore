@@ -401,4 +401,4 @@ FodyWeavers.xsd
 # Drive backup temp files
 *.ini
 # cpp library repo
-CppLibrary/
+#CppLibrary/
