@@ -10,7 +10,7 @@ int main() {
             "end"
         };
         const int menuOptions = sizeof(menuText) / sizeof(menuText[0]) - 1;
-        menu.declare(menuTitle, menuText[menuOptions]);
+        menu.declare(menuTitle, menuText[],menuOptions);
         while (menu.w != menu.exit) {
             menu.menu();
             wait();
