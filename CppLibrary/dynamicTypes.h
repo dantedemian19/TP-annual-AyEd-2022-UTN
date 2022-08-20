@@ -13,6 +13,10 @@ public:
         datatype data;
         node* next = nullptr;// point to the next node
         node* previous = nullptr;// point to the previous node
+        bool eof => {
+            if (next=nullptr) return true;
+            else return false
+        }
     };
 
     node* last = nullptr;// points to the last node
@@ -47,6 +51,8 @@ public:
     node* operator[](int index) {
         return get(index);
     };
+
+   
 
 };
 
