@@ -6,7 +6,7 @@
 void asignSeats(politicalParty party[]){
     int i = 0;
     
-    while (!)
+   
 }
 
 

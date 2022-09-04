@@ -13,15 +13,10 @@ public:
         datatype data;
         node* next = nullptr;// point to the next node
         node* previous = nullptr;// point to the previous node
-        bool eof => {
-            if (next=nullptr) return true;
-            else return false
-        }
     };
 
     node* last = nullptr;// points to the last node
     node* first = nullptr;// points to the first node
-
     // CRUD
     void addTofirst(datatype data);// create some node at first
     void addToEnd(datatype data);// create some node at first

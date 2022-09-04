@@ -12,7 +12,7 @@
 #define back 8
 
 
-struct menuClass {
+struct menuC {
     private:
         string name = "";
         int program = 0;
@@ -28,6 +28,7 @@ struct menuClass {
         void detection();
         void menu();
         void declare(string nameOfMenu, string menuText[], int numberOfOptions, int numberProgram = 1);
+        void declare(string nameOfMenu, linkList<string> menuText, int numberOfOptions, int numberProgram = 1);
         void showGracia();
 };
 
@@ -44,7 +45,7 @@ void advice() {
     //advice
 };
 
-void menuClass::detection() { // mueve el cursor dependiendo la decision del usuario
+void menuC::detection() { // mueve el cursor dependiendo la decision del usuario
     int c = 0;
     // keyboard detection
     while (c != 's' && c != 'w' && c != 'f' && c != entr && c != up && c != down && c != esc && c != back) {
@@ -75,14 +76,14 @@ void menuClass::detection() { // mueve el cursor dependiendo la decision del usu
     }
 };
 
-void menuClass::menu() {// its a easy menu
+void menuC::menu() {// its a easy menu
         enter = false;
         int i = 1;
         while (!enter) {
             i = 1;
             cls();//cursor appears only in selected option 
             cout << " " << name << "  \n";
-            while(text[i-1]!=nullptr) {
+            while(i<=exit) {
                 if (i != exit) {
                     if (w == i) { cout << "  >>"; } cout << "\t" << text[i]->data << "\n";
                 }
@@ -96,10 +97,10 @@ void menuClass::menu() {// its a easy menu
         cls();
 }; 
 
-void menuClass::declare(string nameOfMenu, string menuText[], int numberOfOptions, int numberProgram) {
+
+void menuC::declare(string nameOfMenu, string menuText[], int numberOfOptions, int numberProgram) {
     int i = 0;
     while (numberOfOptions > i) {
-        cout << menuText[i];
         text.addToEnd((string)menuText[i]);
         i += 1;
     }
@@ -108,7 +109,21 @@ void menuClass::declare(string nameOfMenu, string menuText[], int numberOfOption
     name    = nameOfMenu;
 };
 
-void menuClass::showGracia() {
+void menuC::declare(string nameOfMenu, linkList<string> menuText, int numberOfOptions, int numberProgram) {
+    text.addTofirst("enter");
+    linkList<string>::node* temp = menuText.first;
+    while (temp!=nullptr) {
+        text.addToEnd(temp->data);
+        temp = temp->next;
+    }
+    text.addToEnd("back");
+    exit = numberOfOptions;
+    program = numberProgram;
+    name = nameOfMenu;
+};
+
+
+void menuC::showGracia() {
     cout << "error: pulse un numero valido\n  asi que se cree el gracisoso \n MMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMMM \n";
     cout << "MMMMMMMMMMMMMMMMMMMMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNNMMMMMMNmyyyyyyyhdNMMNNNNNNNNNNNNNMMNNNNNNNNNNNNNNNNNNNNNNNNNNNNNdyyyyyyyyhNMMMMMMMMMMMMMMMMMMMMMMMM \n";
     cout << "MMMMMMMMMMMMMMMMMMMMN-                            :NMMNy:`   .--.    --              `.                               .--.`   .+mMMMMMMMMMMMMMMMMMMMMM \n";

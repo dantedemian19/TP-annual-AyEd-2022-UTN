@@ -1,8 +1,32 @@
-#include "../cppLibrary/menu.h" 
-#include "./classes/party.h"
+#include "../cppLibrary/menu.h";
+#include "../cppLibrary/dynamicTypes.h";
+#include "../cppLibrary/fileManager.h";
+#include "./classes/party.h";
+#include "./procedures/vote.h";
 
-void main() {
-        menuClass menu;
+struct application {
+    voteProgram vote;
+};
+application app;
+
+void writefile(fileManager<politicalParty> file, linkList<politicalParty> parties) {
+    linkList<politicalParty>::node* temp = parties.first;
+    while (temp!=nullptr){
+        file.reWrite(temp->data);
+        temp = temp->next;
+    }
+};
+
+
+
+int main() {
+        linkList<politicalParty> parties;
+        fileManager<politicalParty> file;
+            file.declare("parties","txt");
+            file.readToMemory();
+            parties = file.inMemoryFile;
+
+        menuC menu;
         string menuTitle = "\n\t Programa Trabajo practico \n";
         string menuText[] = {
             "start",
@@ -20,19 +44,21 @@ void main() {
             switch (menu.w)
             {
                 case 1:
-                    
-                    cout << "Votar por un partido" << "\n";
+                    app.vote.run(parties);
                     wait();
                 break;
                 case 2:
                     cout << "Resultados" << "\n";
+                    parties[0]->data.print();
+                    pause();
                     wait();
                 break;
                 case 3:
                     cout << "Administrar" << "\n";
-                    wait();
-                case menuOptions:
                     
+                case menuOptions:
+                    writefile(file,parties);
+                    break;
                 default:
                     errormens();
                     break;
