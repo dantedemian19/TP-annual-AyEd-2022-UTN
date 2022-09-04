@@ -58,6 +58,7 @@ public:
         linkList<politicalParty>::node* temp = parties.first;
         if(temp!=nullptr){
             file.reWrite(temp->data);
+            temp = temp->next;
             while (temp!=nullptr){
                 file.write(temp->data);
                 temp = temp->next;   
