@@ -3,17 +3,22 @@
 #include "../cppLibrary/fileManager.h";
 #include "./classes/party.h";
 #include "./procedures/vote.h";
+#include "./procedures/results.h";
 
 struct application {
     voteProgram vote;
+    resultsProgram results;
 };
 application app;
 
 void writefile(fileManager<politicalParty> file, linkList<politicalParty> parties) {
     linkList<politicalParty>::node* temp = parties.first;
-    while (temp!=nullptr){
+    if(temp!=nullptr){
         file.reWrite(temp->data);
-        temp = temp->next;
+        while (temp!=nullptr){
+            file.write(temp->data);
+            temp = temp->next;   
+        }
     }
 };
 
@@ -32,7 +37,6 @@ int main() {
             "start",
             " votar por un partido",
             " Resultados",
-            " administrar",
             "end"
         };
         const int menuOptions = sizeof(menuText) / sizeof(menuText[0]) - 1;
@@ -48,14 +52,10 @@ int main() {
                     wait();
                 break;
                 case 2:
-                    cout << "Resultados" << "\n";
-                    parties[0]->data.print();
+                    app.results.run(parties,file);
                     pause();
                     wait();
                 break;
-                case 3:
-                    cout << "Administrar" << "\n";
-                    
                 case menuOptions:
                     writefile(file,parties);
                     break;
