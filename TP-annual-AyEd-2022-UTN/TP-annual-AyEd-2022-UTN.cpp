@@ -31,7 +31,7 @@ void main() {
                 case 3:
                     cout << "Administrar" << "\n";
                     wait();
-                case menu.exit:
+                case menuOptions:
                     
                 default:
                     errormens();
