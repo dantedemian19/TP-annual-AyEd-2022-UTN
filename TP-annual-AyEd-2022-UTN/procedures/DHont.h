@@ -7,6 +7,7 @@
 #define maxSeats 5
 
 struct DHontProgram {
+private:
     struct mult {
         int partyId;
         int num;
@@ -32,9 +33,29 @@ struct DHontProgram {
             return (comparable == data || comparable > data);
         };
     };
+    void dhont(linkList<politicalParty>& party, linkList<mult> values[]) {
+        linkList<mult> ordered;
+        linkList<mult>::node* cursor,* cursorOrder;
+        mult temp;
+        for (int i = 0; i < maxSeats; i++) {
+            cursor = values[i].first;
+            while (cursor != nullptr) {
+                ordered.addToEnd(cursor->data);
+                cursor = cursor->next;
+            };
+            values[i].purgeAll();
+        }
+        ordered.quickSort();
+        cursorOrder = ordered.first;
+        for (int i = 0; i < maxSeats; i++) {
+            values[i].addTofirst(cursorOrder->data);
+            cursorOrder = cursorOrder->next;
+        };
+    };
 
-    void asignSeats(linkList<politicalParty>& party) {
-        linkList<politicalParty>::node* temp = party.first;
+public:
+    void asignSeats(linkList<politicalParty>& parties) {
+        linkList<politicalParty>::node* temp = parties.first;
         linkList<mult> values[maxSeats];
         mult mulTemp ;
         int j = 0;
@@ -48,11 +69,9 @@ struct DHontProgram {
             j += 1;  
             temp = temp->next;
         };
+        dhont(parties,values);
         for (int i = 0; i < maxSeats; i++) {
-            values[i].quickSort();
-        };
-        for (int i = 0; i < maxSeats; i++) {
-            party[values[i][0]->data.partyId]->data.seats += 1;
+            parties[values[i][0]->data.partyId]->data.seats += 1;
             values[i].purgeAll();
         };
     };

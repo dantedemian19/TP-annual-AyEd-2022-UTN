@@ -105,7 +105,6 @@ public:
                     else if (age.year >= 65) {
                         parties[menu.w - 1]->data.elderVotes++;
                     }
-
                 }
             }
         }

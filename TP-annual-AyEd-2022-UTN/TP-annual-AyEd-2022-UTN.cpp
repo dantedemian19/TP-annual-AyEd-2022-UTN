@@ -36,10 +36,10 @@ int main() {
         string menuText[] = {
             "start",
             " votar por un partido",
-            " Resultados",
+            " ver resultados",
             "end"
         };
-        const int menuOptions = sizeof(menuText) / sizeof(menuText[0]) - 1;
+        const int menuOptions = sizeof(menuText) / sizeof(menuText[0])-1;
         menu.declare(menuTitle, menuText,menuOptions,0);
         while (menu.w != menu.exit) {
             menu.menu();
@@ -49,12 +49,9 @@ int main() {
             {
                 case 1:
                     app.vote.run(parties);
-                    wait();
                 break;
                 case 2:
                     app.results.run(parties,file);
-                    pause();
-                    wait();
                 break;
                 case menuOptions:
                     writefile(file,parties);

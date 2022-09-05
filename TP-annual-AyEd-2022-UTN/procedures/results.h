@@ -11,14 +11,7 @@ struct resultsProgram {
 private:
     void printWinners(linkList<politicalParty> parties) {
         for (int i = 0; i < parties.getSize(); i++) {
-           if (parties[i]->data.seats > 0) cout << "\t lista: " <<parties[i]->data.lista << " " << parties[i]->data.name <<" \n\t " << parties[i]->data.seats << " " << "\n";
-        }
-    };
-        
-    void printResults(linkList<politicalParty> parties) {
-        cout << "\n";
-        for (int i = 0; i < parties.getSize(); i++) {
-            cout << "\t" << parties[i]->data.name << " - " << parties[i]->data.getVotes() << " votos" << "\n";
+           if (parties[i]->data.seats > 0) cout << "\t lista: " <<parties[i]->data.lista << " " << parties[i]->data.name <<" \n\t escanios: " << parties[i]->data.seats << " " << "\n";
         }
     };
 
@@ -27,8 +20,34 @@ private:
         int num = 0;
     };
 
-public:
-    void update(linkList<politicalParty>& parties) {
+    void showByParty(linkList<politicalParty> parties) {
+        menuC menu;
+        string tempStr = "";
+        string title = "mostrar partido\n";
+        linkList<string> options;
+        linkList<politicalParty>::node* temp = parties.first;
+        std::ostringstream s;
+        while (temp != nullptr) {
+            s << temp->data.lista;
+            tempStr = "lista: " + s.str() + " : " + temp->data.name;
+            options.addToEnd(tempStr);
+            temp = temp->next;
+        };
+        const int cantOptions = parties.getSize()+1;
+        menu.declare(title,options,cantOptions);
+        while (menu.w != menu.exit) {
+            menu.menu();
+            wait();
+            cls();
+            if ((menu.w > 0 && menu.w < menu.exit)) {
+                cout <<"\n";
+                parties[menu.w-1]->data.print();
+                pause();
+            }
+        }
+    };
+
+    void update(linkList<politicalParty>& parties) { // calculate the seats
         linkList<politicalParty>::node* temp = parties.first;
         //count total votes
         int totalVotes = 0;
@@ -50,8 +69,11 @@ public:
             DHontProgram dhont;
             dhont.asignSeats(parties);
             temp = temp->next;
-        }
+        };
     };
+
+public:
+    
 
     void run(linkList<politicalParty>& parties, fileManager<politicalParty>& file) {
         update(parties);
@@ -64,27 +86,28 @@ public:
                 temp = temp->next;   
             }
         }
-        string options[] ={
-            "start"
+        string menuText[] = {
+            "start",
             "Mostrar resultados por partido",
             "Ver ganadores de sillas",
-            "Salir"
+            "end"
         };
         menuC menu;
-        const int cantoptions = sizeof(options) / sizeof(options[0]);
-        menu.declare("Resultados", options,cantoptions);
+        const int cantOptions = sizeof(menuText) / sizeof(menuText[0])-1;
+        menu.declare("Resultados", menuText,cantOptions);
         while (menu.w != menu.exit) {
             menu.menu();
             wait();
             cls();
             switch (menu.w) {
             case 1:
-                printResults(parties);
+                showByParty(parties);
                 break;
             case 2:
                 printWinners(parties);
+                pause();
                 break;
-            case cantoptions:
+            case cantOptions:
                 break;
             default:
                 errormens();

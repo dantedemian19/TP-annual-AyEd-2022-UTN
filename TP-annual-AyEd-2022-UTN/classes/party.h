@@ -52,7 +52,9 @@ struct politicalParty{
             }
         };
         void printVotes(){
-            
+            cout << "\t\tVotos de menores de 18: " << teenVotes << "\n";
+            cout << "\t\tVotos de entre 18 a 65: " << adultVotes << "\n";
+            cout << "\t\tVotos de mayores de 65: " << elderVotes << "\n";
             cout << " votos:"<< getVotes() <<"\n";
         };
         void print(){
