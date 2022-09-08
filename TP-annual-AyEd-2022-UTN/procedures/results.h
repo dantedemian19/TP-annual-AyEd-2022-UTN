@@ -28,6 +28,7 @@ private:
         linkList<politicalParty>::node* temp = parties.first;
         std::ostringstream s;
         while (temp != nullptr) {
+            s.str("");
             s << temp->data.lista;
             tempStr = "lista: " + s.str() + " : " + temp->data.name;
             options.addToEnd(tempStr);
@@ -66,10 +67,11 @@ private:
         int i = 0;
         while (temp != nullptr) {
             //d'hont
-            DHontProgram dhont;
-            dhont.asignSeats(parties);
+            temp->data.seats = 0;
             temp = temp->next;
         };
+        DHontProgram dhont;
+        dhont.asignSeats(parties);
     };
 
 public:

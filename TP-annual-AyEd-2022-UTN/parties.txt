@@ -1,25 +1,286 @@
-partidodeizquierda 12 0 0 2 nico delcanio
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
-  
+partidoRepublicano 12 0 0 1
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidoa 13 0 0 12
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 14 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar
+partidob 15 0 0 0
+Juliana Cano
+Sara Jáquez
+Miguel Castro
+Zoe Marin
+Agustina Castro
+Nicole González
+Alessandra Estévez
+Thiago Enríquez
+Juan Parra
+María Moreno
+Salvino Ramos
+Alano Genovese
+Arlo Varela
+Charro Sánchez
+Noe Giménez
+Fermin Cabrera
+Evarado Lombardo
+Tajo Gimenez
+Godalupe Pisani
+Montae Iadanza
+Mario Jiménez
+Malena Fernández
+Carla Delgado
+Pedro Gallardo
+jojo joestar

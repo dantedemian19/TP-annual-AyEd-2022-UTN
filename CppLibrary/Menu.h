@@ -96,7 +96,6 @@ void menuC::menu() {// its a easy menu
         cls();
 }; 
 
-
 void menuC::declare(string nameOfMenu, string menuText[], int numberOfOptions, int numberProgram) {
     int i = 0;
     while (numberOfOptions > i) {

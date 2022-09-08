@@ -10,7 +10,7 @@ struct DHontProgram {
 private:
     struct mult {
         int partyId;
-        int num;
+        float num;
 
         friend bool operator > (mult data, mult comparable) {
             if (data.num > comparable.num)  return true;
