@@ -71,7 +71,9 @@ public:
 
         while (temp != nullptr) {
             s << temp->data.lista;
-            tempStr = "lista: " + s.str() + " : " + temp->data.name;
+            tempStr = " lista: " + s.str() + " : " + temp->data.name;
+            s.str("");
+            s.clear();
             options.addToEnd(tempStr);
             temp = temp->next;
         };

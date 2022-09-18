@@ -58,34 +58,43 @@ private:
         };
         temp = parties.first;
         //get percentage of votes
-        while (temp != nullptr) {
-            temp->data.percentage = (temp->data.getVotes() * 100) / totalVotes;
-            temp = temp->next;
-        };
-        temp = parties.first;
-        //get seats d'hont
-        int i = 0;
-        while (temp != nullptr) {
-            //d'hont
-            temp->data.seats = 0;
-            temp = temp->next;
-        };
-        DHontProgram dhont;
-        dhont.asignSeats(parties);
+        if (totalVotes != 0) {
+            while (temp != nullptr) {
+                temp->data.percentage = (temp->data.getVotes() * 100) / totalVotes;
+                temp = temp->next;
+            }
+
+            temp = parties.first;
+            //get seats d'hont
+            int i = 0;
+            while (temp != nullptr) {
+                //d'hont
+                temp->data.seats = 0;
+                temp = temp->next;
+            };
+            DHontProgram dhont;
+            dhont.asignSeats(parties);
+        }
+        else throw 404;
     };
 
 public:
     
 
     void run(linkList<politicalParty>& parties, fileManager<politicalParty>& file) {
-        update(parties);
+        try { update(parties); }
+        catch (...) {
+            cout << "\n\t error! no hay votos ingresados \n";
+            pause();
+            exit;
+        };
         linkList<politicalParty>::node* temp = parties.first;
-        if(temp!=nullptr){
+        if (temp != nullptr) {
             file.reWrite(temp->data);
             temp = temp->next;
-            while (temp!=nullptr){
+            while (temp != nullptr) {
                 file.write(temp->data);
-                temp = temp->next;   
+                temp = temp->next;
             }
         }
         string menuText[] = {
@@ -95,8 +104,8 @@ public:
             "end"
         };
         menuC menu;
-        const int cantOptions = sizeof(menuText) / sizeof(menuText[0])-1;
-        menu.declare("Resultados", menuText,cantOptions);
+        const int cantOptions = sizeof(menuText) / sizeof(menuText[0]) - 1;
+        menu.declare("Resultados", menuText, cantOptions);
         while (menu.w != menu.exit) {
             menu.menu();
             wait();

@@ -70,12 +70,12 @@ struct politicalParty{
         };
 
         friend istream& operator>> (istream& in, politicalParty& data) {// to read from file
-            in >> data.name>>data.lista>>data.teenVotes>>data.adultVotes>>data.elderVotes;
+            in >> data.name>>data.lista;
             for (int i = 0; i < cantCandidates; i += 1) in >> data.candidates[i];
             return in;
         };
         friend ostream& operator << (ostream& out, politicalParty& data) { // to write into a file
-            out << data.name << " " << data.lista << " " << data.teenVotes << " " << data.adultVotes << " " << data.elderVotes<<"\n";
+            out << data.name << " " << data.lista <<"\n";
             for (int i = 0; i < cantCandidates; i += 1) out << data.candidates[i];
             return out;
         };
