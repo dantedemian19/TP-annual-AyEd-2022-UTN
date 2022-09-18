@@ -29,7 +29,7 @@ int main() {
             file.declare("parties","txt");
             file.readToMemory();
             parties = file.inMemoryFile;
-
+            app.vote.loadVotes(parties);
         menuC menu;
         string menuTitle = "\n\t Programa Trabajo practico \n";
         string menuText[] = {
