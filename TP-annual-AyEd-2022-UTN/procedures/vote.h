@@ -111,6 +111,8 @@ public:
                     else if (vote.age.year >= 65) {
                         parties[menu.w - 1]->data.elderVotes++;
                     }
+                    vote.IDparty = parties[menu.w - 1]->data.lista;
+                    file.write(vote);
                 }
                 
             }
