@@ -1,4 +1,4 @@
-partidoRepublicano 12 0 0 1
+partidoRepublicano 12
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -24,7 +24,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidoa 13 0 0 12
+partidoa 13
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -50,7 +50,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 14 0 0 0
+partidob 14 
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -76,7 +76,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -102,7 +102,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -128,7 +128,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -154,7 +154,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -180,7 +180,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -206,7 +206,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -232,7 +232,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro
@@ -258,7 +258,7 @@ Malena Fernández
 Carla Delgado
 Pedro Gallardo
 jojo joestar
-partidob 15 0 0 0
+partidob 15
 Juliana Cano
 Sara Jáquez
 Miguel Castro

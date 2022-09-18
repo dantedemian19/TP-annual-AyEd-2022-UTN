@@ -18,6 +18,16 @@ struct date {
         void print() {
             cout << day << "/" << month << "/" << year << " ";
         };
+
+        friend istream& operator>> (istream& in, date& data) {// to read from file
+            in >> data.day >> data.month >> data.year;
+            return in;
+        };
+        friend ostream& operator << (ostream& out, date& data) { // to write into a file
+            out << data.day << " " << data.month << " " << data.year;
+            return out;
+        };
+
         friend bool operator > (date data,date comparable) {
             if (data.year > comparable.year)          return true;
             else if (data.month > comparable.month && data.year == comparable.year)    return true;

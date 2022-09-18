@@ -4,6 +4,7 @@
 #include "../CppLibrary/dynamicTypes.h"
 #include "../classes/date.h"
 #include "../classes/party.h"
+#include "../classes/person.h"
 
 #include <sstream>
 
@@ -11,65 +12,70 @@
 
 struct voteProgram {
 private:
-    bool verify(date data) {
-        // if its ferbuary
-        if (data.day > 29 && data.month == 2)
-            return true;
-        // if the month have 31 days
-        else if (data.day > 31 && data.month == (3, 6, 9, 11))
-            return true;
-        //if the month have 30 days
-        else if (data.day > 30)
-            return true;
-        // if its out of value
-        else return false;
-    };
-    void inputData(date data) {
-        cout << "\n";
-        while (1) {
-            cout << "\t ingrese el anio de nacimiento: ";
-            cin >> data.year;
-            if (data.year < 1) {
-                cls();
-                cout << "\n\t (ingrese un valor valido)";
-            }
-            else break;
-        }
-        while (1) {
-            cout << "\t ingrese el mes de nacimiento en numero: ";
-            cin >> data.month;
-            if (data.month < 1 || data.month > 12) {
-                cls();
-                cout << "\n\t (ingrese un valor valido)";
-            }
-            else break;
-        }
-        while (1) {
-            cout << "\t ingrese el dia de nacimiento: ";
-            cin >> data.day;
-            if (data.day < 1 || verify(data)) {
-                cls();
-                cout << "\n\t (ingrese un valor valido)";
-            }
-            else break;
-        }
-    };
+    person vote;
+    
 public:
+
+    void loadVotes(linkList<politicalParty> parties) {
+        int partyid = 0;
+        int tempint = 0;
+        date today;
+        fileManager<person> file;
+        linkList<politicalParty>::node* temp = parties.first;
+        file.declare("votes","txt");
+        file.readToMemory();
+        vote = file.inMemoryFile[0]->data;
+        vote.age.year = today.year - vote.birthday.year;
+        if (!vote.age.year < 16) {
+            while (1) {
+                if (!(vote.dni < 0 || vote.dni > 99999999)) break;
+                else {
+                    cls();
+                    cout << "\n\t" << "DNI invalido" << "\n";
+                }
+            }
+            temp = parties.first;
+            tempint=0;
+            while(temp != nullptr){
+                if (vote.IDparty == temp->data.lista) {
+                    partyid = tempint;
+                }
+                temp = temp->next;
+                tempint += 1;
+            }
+            if (!partyid == 0) {    
+                if (vote.age.year >= 16 && vote.age.year<18) {
+                    parties[partyid]->data.teenVotes++;
+                }
+                else if (vote.age.year >= 18 && vote.age.year<65) {
+                    parties[partyid]->data.adultVotes++;
+                }
+                else if (vote.age.year >= 65) {
+                    parties[partyid]->data.elderVotes++;
+                }
+            }
+        }
+    };
+
     void run(linkList<politicalParty> parties){
         menuC menu;
         string tempStr = "";
         string title = "Votar por un partido\n";
         linkList<string> options;
         linkList<politicalParty>::node* temp = parties.first;
+        fileManager<person> file;
         std::ostringstream s;
+        date today;
+
+        file.declare("votes", "txt");
+
         while (temp != nullptr) {
             s << temp->data.lista;
             tempStr = "lista: " + s.str() + " : " + temp->data.name;
             options.addToEnd(tempStr);
             temp = temp->next;
         };
-        long int dni, i = 0;
-        date birthday,age, today;
+        long int i = 0;
         today.getToday();
         const int cantOptions = parties.getSize()+1;
         menu.declare(title,options,cantOptions);
@@ -78,9 +84,9 @@ public:
             wait();
             cls();
             if ((menu.w > 0 && menu.w < menu.exit)) {
-                inputData(birthday);
-                age.year = today.year - birthday.year;
-                if (age.year < 16) {
+                vote.inputBirthday();
+                vote.age.year = today.year - vote.birthday.year;
+                if (vote.age.year < 16) {
                     cout << "\n\t" << "No puede votar" << "\n";
                     wait();
                     break;
@@ -88,24 +94,25 @@ public:
                 else {
                     while (1) {
                         cout << "\n\t" << "Ingrese DNI: ";
-                        cin >> dni;
-                        if (!(dni < 0 || dni > 99999999)) break;
+                        cin >> vote.dni;
+                        if (!(vote.dni < 0 || vote.dni > 99999999)) break;
                         else {
                             cls();
                             cout << "\n\t" << "DNI invalido" << "\n";
                         }
                     }
                     parties[menu.w - 1]->data.votes++;
-                    if (age.year >= 16 && age.year<18) {
+                    if (vote.age.year >= 16 && vote.age.year<18) {
                         parties[menu.w - 1]->data.teenVotes++;
                     }
-                    else if (age.year >= 18 && age.year<65) {
+                    else if (vote.age.year >= 18 && vote.age.year<65) {
                         parties[menu.w - 1]->data.adultVotes++;
                     }
-                    else if (age.year >= 65) {
+                    else if (vote.age.year >= 65) {
                         parties[menu.w - 1]->data.elderVotes++;
                     }
                 }
+                
             }
         }
     };

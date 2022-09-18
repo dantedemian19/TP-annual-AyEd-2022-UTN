@@ -26,7 +26,7 @@ private:
         string title = "mostrar partido\n";
         linkList<string> options;
         linkList<politicalParty>::node* temp = parties.first;
-        std::ostringstream s;
+        std::ostringstream s; // used to convert integer to string
         while (temp != nullptr) {
             s.str("");
             s << temp->data.lista;
