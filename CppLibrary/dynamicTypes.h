@@ -43,6 +43,8 @@ public:
     void delNode(int index);// delete a node
     void purgeAll(); // delete all nodes
 
+    void reverse();
+
     node* operator[](int index) {
         return get(index);
     };
@@ -101,41 +103,43 @@ public:
 
     template <typename datatype>
     int linkList<datatype>::partition(int low, int high) {
-        datatype pivot = get(low)->data;
-        int count = 0;
-        int i = low + 1;
-        int j = high;
-        while (i <= high) {
-            if (get(i)->data >= pivot) count += 1;
-            i += 1;
-        }
-        int pivotIndex = low + count;
-        swap(pivotIndex, low);
-        i = low;
-        while (i < pivotIndex && j > pivotIndex) {
-
-            while (get(i)->data >= pivot) {
+        datatype pivot = get(high)->data;
+        int i = (low - 1);
+        for (int j = low; j <= high - 1; j++) {
+            if (get(j)->data < pivot) {
                 i++;
-            }
-
-            while (get(j)->data < pivot) {
-                j--;
-            }
-
-            if (i < pivotIndex && j > pivotIndex) {
-                swap(i++, j--);
+                swap(i, j);
             }
         }
-
-        return pivotIndex;
+        swap(i + 1, high);
+        return (i + 1);
     };
+
+
 
     template <typename datatype>
     void linkList<datatype>::quickSort(int low, int high) {
-        if (low >= high) return;
-        int p = partition(low, high);
-        quickSort(low, p - 1);
-        quickSort(p + 1, high);
+        if (low < high) {
+            int pivot = partition(low, high);
+            quickSort(low, pivot - 1);
+            quickSort(pivot + 1, high);
+        }
+    };
+
+    template <typename datatype>
+    void linkList<datatype>::reverse() { // reverse the two way link list
+        node* current = first;
+        node* next= nullptr;
+        node* prev = nullptr;
+        last = first;
+        while (current != nullptr) {
+            next = current->next;
+            current->next = prev;
+            prev = current;
+            current = next;
+        }
+        first = prev;
+
     };
 
     template <typename datatype>

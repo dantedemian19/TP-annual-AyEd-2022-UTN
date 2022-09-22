@@ -31,7 +31,7 @@ void fileManager<dataclass>::readToMemory() {
 		}
 	}
 	else{
-		cout << "error reading the file";
+		cout << " \n error reading the file"+ file << "\n";
 	}
 	fileObj.close();
 };

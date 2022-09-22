@@ -23,6 +23,7 @@ struct candidatestruct{
         out << data.name <<' '<<data.surname<< "\n";
         return out;
     };
+    
 };
 
 struct politicalParty{
@@ -36,7 +37,7 @@ struct politicalParty{
 
         //temp variables for results
         int seats = 0;
-        int percentage = 0;
+        float percentage = 0;
 
         //methods
         void addCandidate(candidatestruct candidate, int i=0 ){
@@ -67,6 +68,19 @@ struct politicalParty{
         };
         int getVotes(){
             return (teenVotes + adultVotes + elderVotes);
+        };
+
+        bool operator <= (politicalParty comparable) {
+        return (percentage <= comparable.percentage);
+        };
+        bool operator >= (politicalParty comparable) {
+        return (percentage >= comparable.percentage);
+        };
+        bool operator < (politicalParty comparable) {
+        return (percentage < comparable.percentage);
+        };
+        bool operator > (politicalParty comparable) {
+        return (percentage > comparable.percentage);
         };
 
         friend istream& operator>> (istream& in, politicalParty& data) {// to read from file

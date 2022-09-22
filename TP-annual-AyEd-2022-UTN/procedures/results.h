@@ -11,14 +11,14 @@ struct resultsProgram {
 private:
     void printWinners(linkList<politicalParty> parties) {
         for (int i = 0; i < parties.getSize(); i++) {
-           if (parties[i]->data.seats > 0) cout << "\t lista: " <<parties[i]->data.lista << " " << parties[i]->data.name <<" \n\t escanios: " << parties[i]->data.seats << " " << "\n";
+            if (parties[i]->data.seats > 0) { 
+                cout << "\t lista: " << parties[i]->data.lista << " " << parties[i]->data.name << " \n\t escanios: " << parties[i]->data.seats << " " << "\n"; 
+                for (int j = 0; j < parties[i]->data.seats; j += 1) { cout << "\t\t"; parties[i]->data.candidates[j].print(); cout << "\n"; }
+            }
         }
     };
 
-    struct seat {
-        int partyId = 0;
-        int num = 0;
-    };
+    DHontProgram dhont;
 
     void showByParty(linkList<politicalParty> parties) {
         menuC menu;
@@ -48,7 +48,7 @@ private:
         }
     };
 
-    void update(linkList<politicalParty>& parties) { // calculate the seats
+    void update(linkList<politicalParty> parties) { // calculate the seats
         linkList<politicalParty>::node* temp = parties.first;
         //count total votes
         int totalVotes = 0;
@@ -58,45 +58,33 @@ private:
         };
         temp = parties.first;
         //get percentage of votes
-        if (totalVotes != 0) {
-            while (temp != nullptr) {
-                temp->data.percentage = (temp->data.getVotes() * 100) / totalVotes;
-                temp = temp->next;
-            }
-
-            temp = parties.first;
-            //get seats d'hont
-            int i = 0;
-            while (temp != nullptr) {
-                //d'hont
-                temp->data.seats = 0;
-                temp = temp->next;
-            };
-            DHontProgram dhont;
-            dhont.asignSeats(parties);
+        while (temp != nullptr) {
+            temp->data.percentage = ((temp->data.getVotes() * static_cast<float>(100)) / totalVotes);
+            temp = temp->next;
         }
-        else throw 404;
+
+        temp = parties.first;
+        //get seats d'hont
+        parties.quickSort(0, parties.getSize() - 1);
+        int i = 0;
+        while (temp != nullptr) {
+            //d'hont
+            temp->data.seats = 0;
+            temp = temp->next;
+        }
     };
 
 public:
     
 
-    void run(linkList<politicalParty>& parties, fileManager<politicalParty>& file) {
+    void run(linkList<politicalParty>& parties, fileManager<politicalParty>& file , politicalParty defaultParties[2]) {
         try { update(parties); }
         catch (...) {
             cout << "\n\t error! no hay votos ingresados \n";
             pause();
-            exit;
+            return;
         };
-        linkList<politicalParty>::node* temp = parties.first;
-        if (temp != nullptr) {
-            file.reWrite(temp->data);
-            temp = temp->next;
-            while (temp != nullptr) {
-                file.write(temp->data);
-                temp = temp->next;
-            }
-        }
+        //parties.quickSort(0,parties.getSize() - 1);
         string menuText[] = {
             "start",
             "Mostrar resultados por partido",
@@ -115,6 +103,8 @@ public:
                 showByParty(parties);
                 break;
             case 2:
+                dhont.printTable(parties);
+                for (int j = 0; j < 2; j += 1) cout <<"\n\t"<<defaultParties[j].name<< "\t|\t" << defaultParties[j].getVotes()<<"\n";
                 printWinners(parties);
                 pause();
                 break;

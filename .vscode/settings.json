@@ -8,5 +8,6 @@
         "initializer_list": "cpp",
         "type_traits": "cpp",
         "xutility": "cpp"
-    }
+    },
+    "C_Cpp.errorSquiggles": "Disabled"
 }

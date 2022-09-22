@@ -12,68 +12,58 @@ private:
         int partyId;
         float num;
 
-        friend bool operator > (mult data, mult comparable) {
-            if (data.num > comparable.num)  return true;
-            else                            return false;
+        bool operator <= (mult comparable) {
+            return (num <= comparable.num);
         };
-        friend bool operator < (mult data, mult comparable) {
-            if (data.num < comparable.num)  return true;
-            else                            return false;
+        bool operator >= (mult comparable) {
+            return (num >= comparable.num);
         };
-        friend bool operator == (mult data, mult comparable) {
-            return (data.num == comparable.num);
+        bool operator < (mult comparable) {
+            return (num < comparable.num);
         };
-        friend bool operator != (mult data, mult comparable) {
-            return (data != comparable);
-        };
-        friend bool operator <= (mult data, mult comparable) {
-            return (comparable == data || comparable < data);
-        };
-        friend bool operator >= (mult data, mult comparable) {
-            return (comparable == data || comparable > data);
+        bool operator > (mult comparable) {
+            return (num > comparable.num);
         };
     };
-    void dhont(linkList<politicalParty>& party, linkList<mult> values[]) {
-        linkList<mult> ordered;
-        linkList<mult>::node* cursor,* cursorOrder;
-        mult temp;
-        for (int i = 0; i < maxSeats; i++) {
-            cursor = values[i].first;
-            while (cursor != nullptr) {
-                ordered.addToEnd(cursor->data);
-                cursor = cursor->next;
-            };
-            values[i].purgeAll();
-        }
-        ordered.quickSort();
-        cursorOrder = ordered.first;
-        for (int i = 0; i < maxSeats; i++) {
-            values[i].addTofirst(cursorOrder->data);
-            cursorOrder = cursorOrder->next;
+    
+
+    void asignSeats(linkList<politicalParty> parties) {
+        mult mulTemp;
+        linkList<mult> order;
+        order.purgeAll();
+        for (int j = parties.getSize()-1; j>=0; j -= 1) {
+            if (parties[j]->data.percentage > 3) {
+                for (int i = 0; i < maxSeats; i++) {
+                    mulTemp.partyId = j;
+                    mulTemp.num = (parties[j]->data.percentage / (i + 1));
+                    order.addToEnd(mulTemp);
+                }
+            }
         };
+        order.quickSort(0, order.getSize() - 1);// orders the values
+        linkList<mult>::node* cursor = order.last;
+        for (int i = maxSeats-1; i >=0 ; i-=1) { // show the last values (the higher ones
+            parties[cursor->data.partyId]->data.seats += 1;
+            if(cursor->previous!=nullptr)cursor = cursor->previous;
+        };
+        
     };
 
 public:
-    void asignSeats(linkList<politicalParty>& parties) {
-        linkList<politicalParty>::node* temp = parties.first;
-        linkList<mult> values[maxSeats];
-        mult mulTemp ;
-        int j = 0;
-        while (temp != nullptr) {
-            if(temp->data.percentage > 3)
-            for (int i = 0; i < maxSeats; i++) {
-                mulTemp.partyId = j;
-                mulTemp.num = temp->data.votes / (i + 1);
-                values[i].addToEnd(mulTemp);
-            }
-            j += 1;  
-            temp = temp->next;
-        };
-        dhont(parties,values);
-        for (int i = 0; i < maxSeats; i++) {
-            parties[values[i][0]->data.partyId]->data.seats += 1;
-            values[i].purgeAll();
-        };
+    
+    void printTable(linkList<politicalParty>& parties) {
+        asignSeats(parties);
+        int size = parties.getSize()-1;
+        cout << "\t" << "Lista";
+        for (int i = 0; i < maxSeats; i += 1) { cout << "\t|\t" << i+1; }
+        for (int i = size; i >= 0; i -= 1) {
+                cout << "\n\t" << parties[i]->data.lista;
+                if (parties[i]->data.percentage > 3) {
+                    for (int j = 0; j < maxSeats; j += 1) cout << "\t|\t" << (parties[i]->data.percentage / (j + 1));
+                }
+                else cout << "________________less than 3%______________________________\n";
+        }
+        cout << "\n";
     };
     
 };
