@@ -1,7 +1,7 @@
 #pragma once
 
 # include "./../CppLibrary/consoleComands.h"
-# include "./../classes/party.h"
+# include "./../datastructs/party.h"
 # include "./../CppLibrary/dynamicTypes.h"
 
 #define maxSeats 5

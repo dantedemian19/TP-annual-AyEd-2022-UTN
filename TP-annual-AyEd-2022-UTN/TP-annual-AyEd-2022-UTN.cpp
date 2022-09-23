@@ -1,7 +1,7 @@
 #include "../cppLibrary/menu.h";
 #include "../cppLibrary/dynamicTypes.h";
 #include "../cppLibrary/fileManager.h";
-#include "./classes/party.h";
+#include "./dataStructs/party.h";
 #include "./procedures/vote.h";
 #include "./procedures/results.h";
 

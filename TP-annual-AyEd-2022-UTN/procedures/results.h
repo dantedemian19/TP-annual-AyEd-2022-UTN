@@ -2,8 +2,8 @@
 
 #include "../CppLibrary/include.h"
 #include "../CppLibrary/dynamicTypes.h"
-#include "../classes/date.h"
-#include "../classes/party.h"
+#include "../datastructs/date.h"
+#include "../datastructs/party.h"
 #include "../procedures/DHont.h"
 
 
@@ -20,7 +20,36 @@ private:
 
     DHontProgram dhont;
 
-    void showByParty(linkList<politicalParty> parties) {
+    void showByParty(politicalParty party) {
+        menuC menu;
+        string tempStr = "";
+        string title = "Partido: " + party.name;
+        string options[] = {
+            "start",
+            " ver partido y votos",
+            " ver votos por genero y edad", 
+            "end"
+        };
+        const int cantOptions = sizeof(options)/sizeof(options[0])-1;
+        menu.declare(title, options, cantOptions);
+        while(menu.w != menu.exit){
+            menu.menu();
+            switch (menu.w) {
+                case 1:
+                    party.print();
+                    pause();
+                    break;
+                case 2:
+                    party.printByGender();
+                    pause();
+                    break;
+                case cantOptions:
+                    break;
+            };
+        };
+    };
+    
+    void filterByParty(linkList<politicalParty> parties) {
         menuC menu;
         string tempStr = "";
         string title = "mostrar partido\n";
@@ -34,18 +63,16 @@ private:
             options.addToEnd(tempStr);
             temp = temp->next;
         };
-        const int cantOptions = parties.getSize()+1;
+        const int cantOptions = options.getSize()+1;
         menu.declare(title,options,cantOptions);
         while (menu.w != menu.exit) {
             menu.menu();
             wait();
             cls();
             if ((menu.w > 0 && menu.w < menu.exit)) {
-                cout <<"\n";
-                parties[menu.w-1]->data.print();
-                pause();
+                showByParty(parties[menu.w-1]->data);
             }
-        }
+        };
     };
 
     void update(linkList<politicalParty> parties) { // calculate the seats
@@ -74,6 +101,36 @@ private:
         }
     };
 
+    void showVotes( linkList<politicalParty> parties) {
+        politicalParty temp;
+        int totalVotes = 0;
+        update(parties);
+        for (int i = 0; parties[i]!=nullptr; i+=1) {
+            temp.before18VotesM += parties[i]->data.before18VotesM;
+            temp.before18VotesF += parties[i]->data.before18VotesF;
+            temp.before30VotesM += parties[i]->data.before30VotesM;
+            temp.before30VotesF += parties[i]->data.before30VotesF;
+            temp.before50VotesM += parties[i]->data.before50VotesM;
+            temp.before50VotesF += parties[i]->data.before50VotesF;
+            temp.after50VotesM  += parties[i]->data.after50VotesM;
+            temp.after50VotesF  += parties[i]->data.after50VotesF;
+            totalVotes += parties[i]->data.getVotes();
+            cout << "\t lista: " << parties[i]->data.lista << " " << parties[i]->data.name << " \n\t votos: " << parties[i]->data.getVotes() << " " << "\n";
+        }
+        cout << "\t\tvotos de hombres"<< "\n";
+        cout << "\t\t hay "<<temp.before18VotesM<<" votos de hombres menores a 18 \n";
+        cout << "\t\t hay "<<temp.before30VotesM<<" votos de hombres menores a 30 \n";
+        cout << "\t\t hay "<<temp.before50VotesM<<" votos de hombres menores a 50 \n";
+        cout << "\t\t hay "<<temp.after50VotesM<<" votos de hombres mayores a 50 \n";
+
+        cout<< "\t\tvotos de mujeres \n";
+        cout << "\t\t hay "<<temp.before18VotesF<<" votos de mujeres menores a 18 \n";
+        cout << "\t\t hay "<<temp.before30VotesF<<" votos de mujeres menores a 30 \n";
+        cout << "\t\t hay "<<temp.before50VotesF<<" votos de mujeres menores a 50 \n";
+        cout << "\t\t hay "<<temp.after50VotesF<<" votos de mujeres mayores a 50 \n";
+        cout << "\n\n\t\tvotos totales: " << totalVotes << "\n";
+    };
+
 public:
     
 
@@ -88,6 +145,7 @@ public:
         string menuText[] = {
             "start",
             "Mostrar resultados por partido",
+            "Mostrar Cantidades de votos",
             "Ver ganadores de sillas",
             "end"
         };
@@ -100,9 +158,14 @@ public:
             cls();
             switch (menu.w) {
             case 1:
-                showByParty(parties);
+                filterByParty(parties);
                 break;
             case 2:
+                showVotes(parties);
+                pause();
+                break;
+            case 3:
+                update(parties);
                 dhont.printTable(parties);
                 for (int j = 0; j < 2; j += 1) cout <<"\n\t"<<defaultParties[j].name<< "\t|\t" << defaultParties[j].getVotes()<<"\n";
                 printWinners(parties);

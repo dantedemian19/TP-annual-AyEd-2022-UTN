@@ -8,6 +8,7 @@ struct person{
     int dni = 0;
     date birthday;
     date age;
+    char gender = ' ';
     
 
     bool verify(date data) {
@@ -56,11 +57,11 @@ struct person{
     };
 
     friend istream& operator>> (istream& in, person& data) {// to read from file
-        in >> data.dni >> data.birthday >> data.IDparty;
+        in >> data.dni >> data.birthday >> data.IDparty>>data.gender;
         return in;
     };
     friend ostream& operator << (ostream& out, person& data) { // to write into a file
-        out << data.dni << ' ' << data.birthday << ' ' << data.IDparty << "\n";
+        out << data.dni << ' ' << data.birthday << ' ' << data.IDparty << " " <<data.gender<< "\n";
         return out;
     };
 

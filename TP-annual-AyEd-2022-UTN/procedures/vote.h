@@ -2,9 +2,9 @@
 
 #include "../CppLibrary/include.h"
 #include "../CppLibrary/dynamicTypes.h"
-#include "../classes/date.h"
-#include "../classes/party.h"
-#include "../classes/person.h"
+#include "../datastructs/date.h"
+#include "../datastructs/party.h"
+#include "../datastructs/person.h"
 
 #include <sstream>
 
@@ -16,15 +16,27 @@ private:
 
     
 public:
-    void countVote(politicalParty& temp) {
-        if (vote.age.year >= 16 && vote.age.year < 18) {
-            temp.teenVotes++;
-        }
-        else if (vote.age.year >= 18 && vote.age.year < 65) {
-            temp.adultVotes++;
-        }
-        else if (vote.age.year >= 65) {
-            temp.elderVotes++;
+    void countVote(politicalParty& temp,char gender) {
+        if (gender=='M'){
+            if (vote.age.year >= 16 && vote.age.year < 18) {
+                temp.before18VotesM += 1;
+            }else if (vote.age.year >= 18 && vote.age.year < 30) {
+                temp.before30VotesM += 1;
+            }else if (vote.age.year >= 30 && vote.age.year < 50) {
+                temp.before50VotesM += 1;
+            }else if (vote.age.year >= 50) {
+                temp.after50VotesM += 1;
+            }
+        } else if(gender == 'F') {
+            if (vote.age.year >= 16 && vote.age.year < 18) {
+                temp.before18VotesF += 1;
+            }else if (vote.age.year >= 18 && vote.age.year < 30) {
+                temp.before30VotesF += 1;
+            }else if (vote.age.year >= 30 && vote.age.year < 50) {
+                temp.before50VotesF += 1;
+            }else if (vote.age.year >= 50) {
+                temp.after50VotesF += 1;
+            }
         }
     };
 
@@ -42,15 +54,15 @@ public:
                 temp = parties.first;
                 while (temp != nullptr) {
                     if (vote.IDparty == temp->data.lista){
-                        countVote(temp->data);
+                        countVote(temp->data,vote.gender);
                     break;
                 }
                 temp = temp->next;
                 if(temp==nullptr)
-                    countVote(defaultParties[0]);
+                    countVote(defaultParties[0],vote.gender);
                 }
             }
-            else countVote(defaultParties[1]);
+            else countVote(defaultParties[1],vote.gender);
         }
     };
 
@@ -102,15 +114,24 @@ public:
                             cout << "\n\t" << "DNI invalido" << "\n";
                         }
                     }
+                    while (1) {
+                        cout << "\n\t" << "Ingrese genero: ";
+                        cin >> vote.gender;
+                        if (!(vote.gender == 'M' || vote.gender == 'F')) break;
+                        else {
+                            cls();
+                            cout << "\n\t" << "Genero invalido" << "\n";
+                        }
+                    }
                     if (menu.w < menu.exit - 1)
                     {
                         linkList<politicalParty>::node* temp = parties[menu.w - 1];
-                        countVote(temp->data);
+                        countVote(temp->data,vote.gender);
                         vote.IDparty = parties[menu.w - 1]->data.lista;
                     }
                     else {
                         vote.IDparty = defualtParties[0].lista;
-                        countVote(defualtParties[0]);
+                        countVote(defualtParties[0],vote.gender);
                     }
                     file.write(vote);
                 }
