@@ -1,0 +1,181 @@
+Los resultados del 27/9/2022 son:
+partidof tiene 85 votos.
+	 Menores de 18: 
+		3 votos masculinos 
+		0 votos femeninos. 
+	 Entre 18 y 30: 
+		9 votos masculinos 
+		8 votos femeninos. 
+	 Entre 30 y 50: 
+		22 votos masculinos 
+		15 votos femeninos. 
+	 Mayores de 50: 
+		10 votos masculinos. 
+		18 votos femeninos.  
+
+	 Total de votos: 85 
+	 Porcentaje de votos: 9.550562% 
+
+_______________________________________________________________________________
+partidob tiene 92 votos.
+	 Menores de 18: 
+		2 votos masculinos 
+		3 votos femeninos. 
+	 Entre 18 y 30: 
+		11 votos masculinos 
+		11 votos femeninos. 
+	 Entre 30 y 50: 
+		21 votos masculinos 
+		18 votos femeninos. 
+	 Mayores de 50: 
+		11 votos masculinos. 
+		15 votos femeninos.  
+
+	 Total de votos: 92 
+	 Porcentaje de votos: 10.337079% 
+
+_______________________________________________________________________________
+partidoa tiene 94 votos.
+	 Menores de 18: 
+		3 votos masculinos 
+		1 votos femeninos. 
+	 Entre 18 y 30: 
+		13 votos masculinos 
+		19 votos femeninos. 
+	 Entre 30 y 50: 
+		18 votos masculinos 
+		12 votos femeninos. 
+	 Mayores de 50: 
+		16 votos masculinos. 
+		12 votos femeninos.  
+
+	 Total de votos: 94 
+	 Porcentaje de votos: 10.561798% 
+
+_______________________________________________________________________________
+partidoc tiene 96 votos.
+	 Menores de 18: 
+		1 votos masculinos 
+		0 votos femeninos. 
+	 Entre 18 y 30: 
+		12 votos masculinos 
+		15 votos femeninos. 
+	 Entre 30 y 50: 
+		20 votos masculinos 
+		22 votos femeninos. 
+	 Mayores de 50: 
+		13 votos masculinos. 
+		13 votos femeninos.  
+
+	 Total de votos: 96 
+	 Porcentaje de votos: 10.786517% 
+
+_______________________________________________________________________________
+partidoe tiene 97 votos.
+	 Menores de 18: 
+		0 votos masculinos 
+		1 votos femeninos. 
+	 Entre 18 y 30: 
+		12 votos masculinos 
+		12 votos femeninos. 
+	 Entre 30 y 50: 
+		17 votos masculinos 
+		27 votos femeninos. 
+	 Mayores de 50: 
+		14 votos masculinos. 
+		14 votos femeninos.  
+
+	 Total de votos: 97 
+	 Porcentaje de votos: 10.898876% 
+
+_______________________________________________________________________________
+partidoh tiene 100 votos.
+	 Menores de 18: 
+		0 votos masculinos 
+		0 votos femeninos. 
+	 Entre 18 y 30: 
+		15 votos masculinos 
+		9 votos femeninos. 
+	 Entre 30 y 50: 
+		23 votos masculinos 
+		30 votos femeninos. 
+	 Mayores de 50: 
+		12 votos masculinos. 
+		11 votos femeninos.  
+
+	 Total de votos: 100 
+	 Porcentaje de votos: 11.235955% 
+
+_______________________________________________________________________________
+partidog tiene 104 votos.
+	 Menores de 18: 
+		1 votos masculinos 
+		0 votos femeninos. 
+	 Entre 18 y 30: 
+		11 votos masculinos 
+		10 votos femeninos. 
+	 Entre 30 y 50: 
+		23 votos masculinos 
+		25 votos femeninos. 
+	 Mayores de 50: 
+		11 votos masculinos. 
+		23 votos femeninos.  
+
+	 Total de votos: 104 
+	 Porcentaje de votos: 11.685393% 
+
+_______________________________________________________________________________
+partidod tiene 106 votos.
+	 Menores de 18: 
+		1 votos masculinos 
+		1 votos femeninos. 
+	 Entre 18 y 30: 
+		13 votos masculinos 
+		14 votos femeninos. 
+	 Entre 30 y 50: 
+		26 votos masculinos 
+		24 votos femeninos. 
+	 Mayores de 50: 
+		14 votos masculinos. 
+		13 votos femeninos.  
+
+	 Total de votos: 106 
+	 Porcentaje de votos: 11.910112% 
+
+_______________________________________________________________________________
+partidoRepublicano tiene 116 votos.
+	 Menores de 18: 
+		1 votos masculinos 
+		3 votos femeninos. 
+	 Entre 18 y 30: 
+		16 votos masculinos 
+		12 votos femeninos. 
+	 Entre 30 y 50: 
+		23 votos masculinos 
+		30 votos femeninos. 
+	 Mayores de 50: 
+		16 votos masculinos. 
+		15 votos femeninos.  
+
+	 Total de votos: 116 
+	 Porcentaje de votos: 13.033708% 
+
+_______________________________________________________________________________
+
+
+Los ganadores de las elecciones son: 
+	partidoe con 1 escaños. 
+		 sus ganadores son 
+			Juliana
+	partidoh con 1 escaños. 
+		 sus ganadores son 
+			Juliana
+	partidog con 1 escaños. 
+		 sus ganadores son 
+			Juliana
+	partidod con 1 escaños. 
+		 sus ganadores son 
+			Juliana
+	partidoRepublicano con 1 escaños. 
+		 sus ganadores son 
+			Juliana

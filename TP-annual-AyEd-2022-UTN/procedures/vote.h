@@ -17,24 +17,31 @@ private:
     
 public:
     void countVote(politicalParty& temp,char gender) {
-        if (gender=='M'){
-            if (vote.age.year >= 16 && vote.age.year < 18) {
+        if (gender == 'M') {
+            if (vote.age.year < 18) {
                 temp.before18VotesM += 1;
-            }else if (vote.age.year >= 18 && vote.age.year < 30) {
+            }
+            else if (vote.age.year >= 18 && vote.age.year < 30) {
                 temp.before30VotesM += 1;
-            }else if (vote.age.year >= 30 && vote.age.year < 50) {
+            }
+            else if (vote.age.year >= 30 && vote.age.year < 50) {
                 temp.before50VotesM += 1;
-            }else if (vote.age.year >= 50) {
+            }
+            else if (vote.age.year >= 50) {
                 temp.after50VotesM += 1;
             }
-        } else if(gender == 'F') {
-            if (vote.age.year >= 16 && vote.age.year < 18) {
+        }
+        else if (gender == 'F') {
+            if (vote.age.year < 18) {
                 temp.before18VotesF += 1;
-            }else if (vote.age.year >= 18 && vote.age.year < 30) {
+            }
+            else if (vote.age.year >= 18 && vote.age.year < 30) {
                 temp.before30VotesF += 1;
-            }else if (vote.age.year >= 30 && vote.age.year < 50) {
+            }
+            else if (vote.age.year >= 30 && vote.age.year < 50) {
                 temp.before50VotesF += 1;
-            }else if (vote.age.year >= 50) {
+            }
+            else if (vote.age.year >= 50) {
                 temp.after50VotesF += 1;
             }
         }
@@ -46,20 +53,22 @@ public:
         linkList<politicalParty>::node* temp = parties.first;
         file.declare("votes", "txt");
         file.readToMemory();
+        file.inMemoryFile.delNode(file.inMemoryFile.getSize() - 1);
         today.getToday();
-        for (int i = 0; file.inMemoryFile[i] != nullptr; i += 1) {
+        for (int i = 0; i < file.inMemoryFile.getSize(); i += 1) {
             vote = file.inMemoryFile[i]->data;
             vote.age.year = today.year - vote.birthday.year;
-            if (!(vote.age.year < 16) && ( vote.gender == 'M' || vote.gender == 'F' )) {
-                temp = parties.first;
-                while (temp != nullptr) {
-                    if (vote.IDparty == temp->data.lista){
-                        countVote(temp->data,vote.gender);
-                    break;
-                }
-                temp = temp->next;
-                if(temp==nullptr)
-                    countVote(defaultParties[0],vote.gender);
+            if (!(vote.age.year <= 16) && ( vote.gender == 'M' || vote.gender == 'F' )) {
+                if (vote.IDparty == -1) { countVote(defaultParties[0], vote.gender); } 
+                else {
+                    temp = parties.first;
+                    while (temp != nullptr) {
+                        if (vote.IDparty == temp->data.lista) {
+                            countVote(temp->data, vote.gender);
+                            break;
+                        }
+                        temp = temp->next;
+                    }
                 }
             }
             else countVote(defaultParties[1],vote.gender);
@@ -117,7 +126,7 @@ public:
                     while (1) {
                         cout << "\n\t" << "Ingrese genero (M o F): ";
                         cin >> vote.gender;
-                        if (!(vote.gender == 'M' || vote.gender == 'F')) break;
+                        if (!(vote.gender == 'm' || vote.gender == 'f')) break;
                         else {
                             cls();
                             cout << "\n\t" << "Genero invalido" << "\n";

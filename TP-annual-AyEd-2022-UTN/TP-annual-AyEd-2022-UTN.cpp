@@ -23,11 +23,13 @@ void inicializateDefault() {
 };
 
 int main() {
+        advice();
         linkList<politicalParty> parties;
         fileManager<politicalParty> file;
             file.declare("parties","txt");
             file.readToMemory();
             parties = file.inMemoryFile;
+            parties.delNode(parties.getSize() - 1);
             app.vote.loadVotes(parties,defaultParties);
             inicializateDefault();
         menuC menu;

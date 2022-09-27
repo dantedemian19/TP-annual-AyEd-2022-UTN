@@ -5,6 +5,7 @@
 #include "../datastructs/date.h"
 #include "../datastructs/party.h"
 #include "../procedures/DHont.h"
+#include "../procedures/report.h"
 
 
 struct resultsProgram {
@@ -75,7 +76,7 @@ private:
         };
     };
 
-    void update(linkList<politicalParty> parties) { // calculate the seats
+    void update(linkList<politicalParty> parties , politicalParty defaultParties[2]) { // calculate the seats
         linkList<politicalParty>::node* temp = parties.first;
         //count total votes
         int totalVotes = 0;
@@ -89,7 +90,6 @@ private:
             temp->data.percentage = ((temp->data.getVotes() * static_cast<float>(100)) / totalVotes);
             temp = temp->next;
         }
-
         temp = parties.first;
         //get seats d'hont
         parties.quickSort(0, parties.getSize() - 1);
@@ -101,10 +101,10 @@ private:
         }
     };
 
-    void showVotes( linkList<politicalParty> parties) {
+    void showVotes( linkList<politicalParty> parties , politicalParty defaultParties[2]) {
         politicalParty temp;
         int totalVotes = 0;
-        update(parties);
+        update(parties,defaultParties);
         for (int i = 0; parties[i]!=nullptr; i+=1) {
             temp.before18VotesM += parties[i]->data.before18VotesM;
             temp.before18VotesF += parties[i]->data.before18VotesF;
@@ -117,6 +117,12 @@ private:
             totalVotes += parties[i]->data.getVotes();
             cout << "\t lista: " << parties[i]->data.lista << " " << parties[i]->data.name << " \n\t votos: " << parties[i]->data.getVotes() << " " << "\n";
         }
+        cout << "\t total votos validos:"<< (totalVotes)<<"\n";
+        totalVotes += defaultParties[0].getVotes();
+        cout << "\n" << "\t votos en blanco: " << defaultParties[0].getVotes() << " " << "\n";
+        totalVotes += defaultParties[1].getVotes();
+        cout << "\n" << "\t votos anulados: " << defaultParties[1].getVotes() << " " << "\n";
+        cout << "\n" << "\t votos por genero y edad: " << "\n";
         cout << "\t\tvotos de hombres"<< "\n";
         cout << "\t\t hay "<<temp.before18VotesM<<" votos de hombres menores a 18 \n";
         cout << "\t\t hay "<<temp.before30VotesM<<" votos de hombres menores a 30 \n";
@@ -128,14 +134,15 @@ private:
         cout << "\t\t hay "<<temp.before30VotesF<<" votos de mujeres menores a 30 \n";
         cout << "\t\t hay "<<temp.before50VotesF<<" votos de mujeres menores a 50 \n";
         cout << "\t\t hay "<<temp.after50VotesF<<" votos de mujeres mayores a 50 \n";
-        cout << "\n\n\t\tvotos totales: " << totalVotes << "\n";
+        cout << "\n\n\t\tvotos totales: " << totalVotes << "\n\n";
+
     };
 
 public:
     
 
     void run(linkList<politicalParty>& parties, fileManager<politicalParty>& file , politicalParty defaultParties[2]) {
-        try { update(parties); }
+        try { update(parties,defaultParties); }
         catch (...) {
             cout << "\n\t error! no hay votos ingresados \n";
             pause();
@@ -161,17 +168,19 @@ public:
                 filterByParty(parties);
                 break;
             case 2:
-                showVotes(parties);
+                showVotes(parties,defaultParties);
                 pause();
                 break;
             case 3:
-                update(parties);
+                update(parties,defaultParties);
                 dhont.printTable(parties);
                 for (int j = 0; j < 2; j += 1) cout <<"\n\t"<<defaultParties[j].name<< "\t|\t" << defaultParties[j].getVotes()<<"\n\n";
                 printWinners(parties);
                 pause();
                 break;
             case cantOptions:
+                dhont.asignSeats(parties);
+                printToFile( parties, defaultParties);
                 break;
             default:
                 errormens();

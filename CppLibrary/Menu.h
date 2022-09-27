@@ -75,7 +75,7 @@ void menuC::detection() { // mueve el cursor dependiendo la decision del usuario
     }
 };
 
-void menuC::menu() {// its a easy menu
+void menuC::menu() {// its a easy arrow menu
         enter = false;
         int i = 1;
         while (!enter) {

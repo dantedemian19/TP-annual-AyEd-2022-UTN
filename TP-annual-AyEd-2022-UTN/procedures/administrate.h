@@ -13,12 +13,32 @@ class adminProgram {
     private:
         void newparty(fileManager<politicalParty>& file){
             politicalParty temp;
-            cout << "lista Numero: ";
-            cin >> temp.lista;
-            cout << "Nombre del partido: ";
-            cin >> temp.name;
-            cout << "Nombre de la lista: ";
-            cin >> temp.lista;
+            while (1) {
+                cout << "lista Numero: ";
+                cin >> temp.lista;
+                if (temp.lista > 0) break;
+                else cout << "lista invalida, intente de nuevo: ";
+            }
+            while (1) {
+                cout << "nombre del partido: ";
+                cin >> temp.name;
+                if (temp.name != "") break;
+                else cout << "nombre invalido, intente de nuevo: ";
+            }
+            for (int i = 0; i < cantCandidates; i += 1) {
+                while (1) {
+                    cout <<i<<") " << "nombre del candidato : ";
+                    cin >> temp.candidates[i].name;
+                    if (temp.candidates[i].name != "") break;
+                    else cout << "nombre invalido, intente de nuevo: ";
+                }
+                while (1) {
+                    cout << i << ") " << "apellido del candidato : ";
+                    cin >> temp.candidates[i].surname;
+                    if (temp.candidates[i].surname != "") break;
+                    else cout << "apellido invalido, intente de nuevo: ";
+                }
+            };
             file.inMemoryFile.addToEnd(temp);
             file.write(temp);
         };
@@ -28,7 +48,7 @@ class adminProgram {
             string title = " selecionar un candidatos\n";
             linkList<string> options;
             const int size = sizeof(party->data.candidates)/sizeof(party->data.candidates[0])-1;
-            for (int i = 0; i < size; i++) {
+            for (int i = 0; i < cantCandidates; i++) {
                 options.addToEnd(party->data.candidates[i].name);
             };
             menu.declare(title, options, options.getSize()+1);
@@ -38,12 +58,12 @@ class adminProgram {
                 cls();
                 if (menu.w < menu.exit && menu.w > 0) {
                     party->data.candidates[menu.w-1].print();
-                    cout << "\t ingrese nuevo nombre: ";
+                    cout << "\n\t ingrese nuevo nombre: ";
                     cin >> party->data.candidates[menu.w-1].name;
                     cout << "\t ingrese nuevo apellido: ";
                     cin >> party->data.candidates[menu.w-1].surname;
                     options.purgeAll();
-                    for (int i = 0; i < size; i++) {
+                    for (int i = 0; i < size; i++) { // refresh options
                         options.addToEnd(party->data.candidates[i].name);
                     };
                     menu.declare(title, options, options.getSize() + 1);
@@ -72,7 +92,7 @@ class adminProgram {
                 switch (menu.w) {
                     case 1:
                         cout << "\t lista: " << party->data.lista <<") "<< party->data.name << "\n";
-                        cout << "\t\tNombre de la lista: ";
+                        cout << "\t\t";
                         cout << "Nombre del partido: ";
                         cin >> party->data.name;
                         file.memoryToFile();
@@ -83,6 +103,8 @@ class adminProgram {
                         break;
                     case 3: 
                         file.inMemoryFile.delNode(w);
+                        file.memoryToFile();
+                        menu.w=menu.exit;
                         break;
                     case cantOptions:
                         break;
@@ -114,23 +136,16 @@ class adminProgram {
             cls();
             menu.menu();
             cls();
-            if (menu.w == cantOptions-1) newparty(file);
+            if (menu.w == cantOptions - 1) {
+                newparty(file);
+                parties = file.inMemoryFile;
+                menu.w = menu.exit;
+            }
             else if (menu.w > 0 && menu.w < menu.exit) {
                 editParty(parties[menu.w], file, menu.w-1); 
-                options.purgeAll();
-                while (temp != nullptr) {
-                    s.str("");
-                    s.clear();
-                    s << temp->data.lista;
-                    tempStr = " lista: " + s.str() + " : " + temp->data.name;
-                    options.addToEnd(tempStr);
-                    temp = temp->next;
-                }; 
-                options.addToEnd("Crear nuevo partido");
-                int cantOptions = options.getSize() + 1;
-                menu.declare(title, options, cantOptions);
+                menu.w = menu.exit;
             }
-            else if (menu.w == menu.exit) { 
+            if (menu.w == menu.exit) { 
                 parties = file.inMemoryFile; 
                 break;
                 

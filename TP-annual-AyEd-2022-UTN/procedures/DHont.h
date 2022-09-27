@@ -25,13 +25,15 @@ private:
             return (num > comparable.num);
         };
     };
-    
+
+
+public:
 
     void asignSeats(linkList<politicalParty> parties) {
         mult mulTemp;
         linkList<mult> order;
         order.purgeAll();
-        for (int j = parties.getSize()-1; j>=0; j -= 1) {
+        for (int j = parties.getSize() - 1; j >= 0; j -= 1) {
             if (parties[j]->data.percentage > 3) {
                 for (int i = 0; i < maxSeats; i++) {
                     mulTemp.partyId = j;
@@ -42,15 +44,13 @@ private:
         };
         order.quickSort(0, order.getSize() - 1);// orders the values
         linkList<mult>::node* cursor = order.last;
-        for (int i = maxSeats-1; i >=0 ; i-=1) { // show the last values (the higher ones
+        for (int i = maxSeats - 1; i >= 0; i -= 1) { // show the last values (the higher ones
             parties[cursor->data.partyId]->data.seats += 1;
-            if(cursor->previous!=nullptr)cursor = cursor->previous;
+            if (cursor->previous != nullptr)cursor = cursor->previous;
         };
-        
+
     };
 
-public:
-    
     void printTable(linkList<politicalParty>& parties) {
         asignSeats(parties);
         int size = parties.getSize()-1;
