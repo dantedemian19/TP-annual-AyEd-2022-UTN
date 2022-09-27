@@ -167,7 +167,7 @@ public:
             case 3:
                 update(parties);
                 dhont.printTable(parties);
-                for (int j = 0; j < 2; j += 1) cout <<"\n\t"<<defaultParties[j].name<< "\t|\t" << defaultParties[j].getVotes()<<"\n";
+                for (int j = 0; j < 2; j += 1) cout <<"\n\t"<<defaultParties[j].name<< "\t|\t" << defaultParties[j].getVotes()<<"\n\n";
                 printWinners(parties);
                 pause();
                 break;

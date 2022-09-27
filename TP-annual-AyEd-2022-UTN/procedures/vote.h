@@ -50,7 +50,7 @@ public:
         for (int i = 0; file.inMemoryFile[i] != nullptr; i += 1) {
             vote = file.inMemoryFile[i]->data;
             vote.age.year = today.year - vote.birthday.year;
-            if (!(vote.age.year < 16)) {
+            if (!(vote.age.year < 16) && ( vote.gender == 'M' || vote.gender == 'F' )) {
                 temp = parties.first;
                 while (temp != nullptr) {
                     if (vote.IDparty == temp->data.lista){
@@ -115,7 +115,7 @@ public:
                         }
                     }
                     while (1) {
-                        cout << "\n\t" << "Ingrese genero: ";
+                        cout << "\n\t" << "Ingrese genero (M o F): ";
                         cin >> vote.gender;
                         if (!(vote.gender == 'M' || vote.gender == 'F')) break;
                         else {

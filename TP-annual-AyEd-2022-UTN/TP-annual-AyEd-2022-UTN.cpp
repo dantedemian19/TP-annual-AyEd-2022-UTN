@@ -4,10 +4,12 @@
 #include "./dataStructs/party.h";
 #include "./procedures/vote.h";
 #include "./procedures/results.h";
+#include "./procedures/administrate.h";
 
 struct application {
     voteProgram vote;
     resultsProgram results;
+    adminProgram admin;
 };
 application app;
 
@@ -34,7 +36,7 @@ int main() {
             "start",
             " votar por un partido",
             " ver resultados",
-            " aniadir partido",
+            " Administrar partidos",
             "end"
         };
         const int menuOptions = sizeof(menuText) / sizeof(menuText[0])-1;
@@ -52,7 +54,7 @@ int main() {
                     app.results.run(parties, file,defaultParties);
                 break;
                 case 3:
-                    
+                    app.admin.run(parties,file);
                 break;
                 case menuOptions:
                     break;
