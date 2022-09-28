@@ -9,7 +9,7 @@
 
 #include <sstream>
 
-class adminProgram {
+struct adminProgram {
     private:
         void newparty(fileManager<politicalParty>& file){
             politicalParty temp;

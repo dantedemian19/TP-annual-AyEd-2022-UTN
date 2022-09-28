@@ -33,7 +33,7 @@ int main() {
             app.vote.loadVotes(parties,defaultParties);
             inicializateDefault();
         menuC menu;
-        string menuTitle = "\n\t Programa Trabajo practico \n";
+        string menuTitle = "\n\t Programa Trabajo practico Grupo 5\n";
         string menuText[] = {
             "start",
             " votar por un partido",
