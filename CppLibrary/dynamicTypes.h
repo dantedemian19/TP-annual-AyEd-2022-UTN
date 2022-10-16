@@ -6,11 +6,11 @@ template <typename datatype>
 
 struct linkList {
 private: 
-    int partition(int low = 0, int high = 0);
+    int partition(int low = 0, int high = 0); // partition list for quicksort
 public:
     struct node {// node general structure
     public:
-        datatype data;
+        datatype data;      // where the data is stored
         node* next = nullptr;// point to the next node
         node* previous = nullptr;// point to the previous node
     };
@@ -35,6 +35,7 @@ public:
         }
         else return nullptr;
     };
+    
     int getSize();// get the size of the list
 
     void updNode(int index, datatype data);// update a node
@@ -43,14 +44,11 @@ public:
     void delNode(int index);// delete a node
     void purgeAll(); // delete all nodes
 
-    void reverse();
+    void reverse();// reverse the order of the list
 
-    node* operator[](int index) {
+    node* operator[](int index) { // just for [] sintax
         return get(index);
     };
-
-   
-
 };
 
     template <typename datatype>
@@ -115,8 +113,6 @@ public:
         return (i + 1);
     };
 
-
-
     template <typename datatype>
     void linkList<datatype>::quickSort(int low, int high) {
         if (low < high) {
@@ -139,7 +135,6 @@ public:
             current = next;
         }
         first = prev;
-
     };
 
     template <typename datatype>
@@ -154,6 +149,7 @@ public:
             //cout << "\n Delete Succesfull \n";
         }
     };
+
     template <typename datatype>
     int linkList<datatype>::getSize() {
         int size = 0;
@@ -164,6 +160,7 @@ public:
         }
         return size;
     };
+
     template <typename datatype>
     void linkList<datatype>::purgeAll() {
         node* current = first;

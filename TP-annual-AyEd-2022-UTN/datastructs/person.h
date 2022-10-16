@@ -64,5 +64,4 @@ struct person{
         out << data.dni << ' ' << data.birthday << ' ' << data.IDparty << " " <<data.gender<< "\n";
         return out;
     };
-
 };

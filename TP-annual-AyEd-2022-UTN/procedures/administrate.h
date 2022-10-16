@@ -42,6 +42,7 @@ struct adminProgram {
             file.inMemoryFile.addToEnd(temp);
             file.write(temp);
         };
+
         void selectCandidate(linkList<politicalParty>::node* party){
             menuC menu;
             string tempStr = "";
@@ -72,6 +73,7 @@ struct adminProgram {
                 };
             };
         };
+
         void editParty(linkList<politicalParty>::node* party, fileManager<politicalParty>& file, int w){
             menuC menu;
             string tempStr = "";
@@ -111,6 +113,7 @@ struct adminProgram {
                 };
             };
         };
+
     public:
     void run(linkList<politicalParty>& parties, fileManager<politicalParty>& file) {
         menuC menu;
@@ -119,7 +122,6 @@ struct adminProgram {
         linkList<string> options;
         linkList<politicalParty>::node* temp = parties.first;
         std::ostringstream s;
-
         while (temp != nullptr) {
             s << temp->data.lista;
             tempStr = " lista: " + s.str() + " : " + temp->data.name;
@@ -131,7 +133,6 @@ struct adminProgram {
         options.addToEnd("Crear nuevo partido");
         int cantOptions = options.getSize()+1;
         menu.declare(title, options, cantOptions);
-
         while (menu.w != menu.exit) {
             cls();
             menu.menu();
@@ -147,8 +148,7 @@ struct adminProgram {
             }
             if (menu.w == menu.exit) { 
                 parties = file.inMemoryFile; 
-                break;
-                
+                break;  
             }
         };
     };

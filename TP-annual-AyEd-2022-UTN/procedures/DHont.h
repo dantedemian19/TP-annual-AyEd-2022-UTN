@@ -26,9 +26,7 @@ private:
         };
     };
 
-
 public:
-
     void asignSeats(linkList<politicalParty> parties) {
         mult mulTemp;
         linkList<mult> order;
@@ -48,7 +46,6 @@ public:
             parties[cursor->data.partyId]->data.seats += 1;
             if (cursor->previous != nullptr)cursor = cursor->previous;
         };
-
     };
 
     void printTable(linkList<politicalParty>& parties) {

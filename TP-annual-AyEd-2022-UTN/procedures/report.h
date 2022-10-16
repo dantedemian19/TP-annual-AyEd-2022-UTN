@@ -60,12 +60,12 @@ void printToFile(linkList<politicalParty> parties, politicalParty defaultParties
     file.write("\n");
     file.write("Los ganadores de las elecciones son: \n");
     for (int i = 0; i < parties.getSize(); i++) {
-            if (parties[i]->data.seats > 0) { 
-                file.write("\t" + parties[i]->data.name + " con " + std::to_string(parties[i]->data.seats) + " escaños. \n");
-                file.write("\t\t sus ganadores son \n");
-                for (int j = 0; j < parties[i]->data.seats; j++) {
-                    file.write("\t\t\t" + parties[i]->data.candidates[j].name + " "+ parties[i]->data.candidates[j].surname + "\n");
-                }
+        if (parties[i]->data.seats > 0) { 
+            file.write("\t" + parties[i]->data.name + " con " + std::to_string(parties[i]->data.seats) + " escaños. \n");
+            file.write("\t\t sus ganadores son \n");
+            for (int j = 0; j < parties[i]->data.seats; j++) {
+                file.write("\t\t\t" + parties[i]->data.candidates[j].name + " "+ parties[i]->data.candidates[j].surname + "\n");
             }
+        }
     }
 }

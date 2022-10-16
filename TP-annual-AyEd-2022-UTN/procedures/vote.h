@@ -13,8 +13,7 @@
 struct voteProgram {
 private:
     person vote;
-
-    
+  
 public:
     void countVote(politicalParty& temp,char gender) {
         if (gender == 'M') {
@@ -144,7 +143,6 @@ public:
                     }
                     file.write(vote);
                 }
-                
             }
         }
     };

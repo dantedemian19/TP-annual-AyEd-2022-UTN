@@ -22,8 +22,7 @@ struct candidatestruct{
     friend ostream& operator << (ostream& out, candidatestruct& data) { // to write into a file
         out << data.name <<' '<<data.surname<< "\n";
         return out;
-    };
-    
+    };  
 };
 
 struct politicalParty{

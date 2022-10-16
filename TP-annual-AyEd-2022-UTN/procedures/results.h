@@ -104,8 +104,8 @@ private:
     void showVotes( linkList<politicalParty> parties , politicalParty defaultParties[2]) {
         politicalParty temp;
         int totalVotes = 0;
-        update(parties,defaultParties);
-        for (int i = 0; parties[i]!=nullptr; i+=1) {
+        update(parties,defaultParties);// update the seats
+        for (int i = 0; parties[i]!=nullptr; i+=1) { // calculate the total of votes
             temp.before18VotesM += parties[i]->data.before18VotesM;
             temp.before18VotesF += parties[i]->data.before18VotesF;
             temp.before30VotesM += parties[i]->data.before30VotesM;
@@ -117,30 +117,29 @@ private:
             totalVotes += parties[i]->data.getVotes();
             cout << "\t lista: " << parties[i]->data.lista << " " << parties[i]->data.name << " \n\t votos: " << parties[i]->data.getVotes() << " " << "\n";
         }
+        // votos totales
         cout << "\t total votos validos:"<< (totalVotes)<<"\n";
         totalVotes += defaultParties[0].getVotes();
         cout << "\n" << "\t votos en blanco: " << defaultParties[0].getVotes() << " " << "\n";
         totalVotes += defaultParties[1].getVotes();
         cout << "\n" << "\t votos anulados: " << defaultParties[1].getVotes() << " " << "\n";
         cout << "\n" << "\t votos por genero y edad: " << "\n";
+        //votos hombres
         cout << "\t\tvotos de hombres"<< "\n";
         cout << "\t\t hay "<<temp.before18VotesM<<" votos de hombres menores a 18 \n";
         cout << "\t\t hay "<<temp.before30VotesM<<" votos de hombres menores a 30 \n";
         cout << "\t\t hay "<<temp.before50VotesM<<" votos de hombres menores a 50 \n";
         cout << "\t\t hay "<<temp.after50VotesM<<" votos de hombres mayores a 50 \n";
-
+        // votos mujeres
         cout<< "\t\tvotos de mujeres \n";
         cout << "\t\t hay "<<temp.before18VotesF<<" votos de mujeres menores a 18 \n";
         cout << "\t\t hay "<<temp.before30VotesF<<" votos de mujeres menores a 30 \n";
         cout << "\t\t hay "<<temp.before50VotesF<<" votos de mujeres menores a 50 \n";
         cout << "\t\t hay "<<temp.after50VotesF<<" votos de mujeres mayores a 50 \n";
         cout << "\n\n\t\tvotos totales: " << totalVotes << "\n\n";
-
     };
 
 public:
-    
-
     void run(linkList<politicalParty>& parties, fileManager<politicalParty>& file , politicalParty defaultParties[2]) {
         try { update(parties,defaultParties); }
         catch (...) {
